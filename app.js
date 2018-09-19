@@ -41,7 +41,7 @@ for(let i = 0; i <= 1440; i += 15){
 //console.log(JSON.stringify(res))
 
 //TODO Write into a file
-let tle = "conv.tle"
+let tle = "conv.czml"
 fs.writeFile(tle, JSON.stringify(res), function(err){
 	if(err){console.log(err)}
 	console.log("Success!")
