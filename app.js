@@ -21,27 +21,43 @@ for(let count = 0; count < iterations.length - 1; count++){
 
 let res = []
 
+satrec = satellite.twoline2satrec(fin[1], fin[2])
+gmst = satellite.gstime(julian.toDate(satrec.jdsatepoch));
+//console.log(satrec.)
+
+
+//TODO Look into CZML_Writer.
+//let obj = {}
+//obj["id"] = fin[0]
+//obj["name"]
+//obj[""]
+//res.push(obj)
+
+
 for(let i = 0; i <= 1440; i += 15){
-	satrec = satellite.twoline2satrec(fin[1], fin[2]);
+	//satrec = satellite.twoline2satrec(fin[1], fin[2]);
 	positionAndVelocity = satellite.sgp4(satrec, i);
-	gmst = satellite.gstime(julian.toDate(satrec.jdsatepoch));
-	
+
 	positionEci = positionAndVelocity.position;
-	//console.log(positionEci)
 	positionEci.x = positionEci.x*1000;
 	positionEci.y = positionEci.y*1000;
 	positionEci.z = positionEci.z*1000;
-	
+
 	geodeticCoords = satellite.eciToGeodetic(positionEci, gmst);
-	var gmst = satellite.gstime(satrec.jdsatepoch);
+
+	//var gmst2 = satellite.gstime(satrec.jdsatepoch);
+	//console.log(satrec.ndot)
+	//console.log(satrec.no)
 	
 	res.push(sec, positionEci.x, positionEci.y, positionEci.z);
 	sec+=900;
 }
 //console.log(JSON.stringify(res))
+//XXX Test multiples of 3
+//console.log(res.length) //SUCCESS
 
 //TODO Write into a file
-let tle = "conv.czml"
+let tle = "../Curr_SD-Proj_v2/Source/conv.czml"
 fs.writeFile(tle, JSON.stringify(res), function(err){
 	if(err){console.log(err)}
 	console.log("Success!")
