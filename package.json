@@ -1,0 +1,25 @@
+{
+  "name": "tle2czml_converter",
+  "version": "1.0.0",
+  "description": "module that handles tle conversion to czml",
+  "main": "index.js",
+  "dependencies": {
+    "julian": "^0.2.0",
+    "moment": "^2.22.2",
+    "satellite.js": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r3lek/TLE2CZML_converter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r3lek/TLE2CZML_converter/issues"
+  },
+  "homepage": "https://github.com/r3lek/TLE2CZML_converter#readme"
+}
